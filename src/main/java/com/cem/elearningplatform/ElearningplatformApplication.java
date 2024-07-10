@@ -18,7 +18,7 @@ public class ElearningplatformApplication {
         SpringApplication.run(ElearningplatformApplication.class, args);
     }
 
-    //@Bean
+    @Bean
     public CommandLineRunner commandLineRunner(
             AuthorRepository repository, VideoRepository videoRepository
             ) {
