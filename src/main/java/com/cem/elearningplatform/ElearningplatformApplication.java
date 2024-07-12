@@ -4,11 +4,13 @@ import com.cem.elearningplatform.models.Author;
 import com.cem.elearningplatform.models.Video;
 import com.cem.elearningplatform.repositories.AuthorRepository;
 import com.cem.elearningplatform.repositories.VideoRepository;
+import com.cem.elearningplatform.specification.AuthorSpecification;
 import com.github.javafaker.Faker;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -37,7 +39,7 @@ public class ElearningplatformApplication {
                         .age(faker.number().numberBetween(17,73))
                         .build();
 
-                repository.save(author);
+                //repository.save(author);
             }
 
             /*var author = Author.builder()
@@ -53,10 +55,10 @@ public class ElearningplatformApplication {
            // repository.updateAuthor(22,1);
             //System.out.println("updated count: "+repository.updateAllAuthors(22));
 
-             repository.findByNamedQuery(60)
-                    .forEach(System.out::println);
+             //repository.findByNamedQuery(60)
+                    //.forEach(System.out::println);
 
-             repository.updateByNamedQuery(14);
+             //repository.updateByNamedQuery(14);
             //List<Author> authors = repository.findAll();
 //            for(Author author: authors){
 //                author.setAge(22);
@@ -74,6 +76,12 @@ public class ElearningplatformApplication {
             videoRepository.save(video);
 
              */
+            Specification<Author> spec = Specification.where(AuthorSpecification.hasAge(44))
+                    .or(AuthorSpecification.firstnameLike("e"))
+            ;
+
+            repository.findAll(spec).forEach(System.out::println);
+
         };
     }
 
