@@ -51,7 +51,12 @@ public class ElearningplatformApplication {
 
             repository.save(author);*/
            // repository.updateAuthor(22,1);
-            System.out.println("updated count: "+repository.updateAllAuthors(22));
+            //System.out.println("updated count: "+repository.updateAllAuthors(22));
+
+             repository.findByNamedQuery(60)
+                    .forEach(System.out::println);
+
+             repository.updateByNamedQuery(14);
             //List<Author> authors = repository.findAll();
 //            for(Author author: authors){
 //                author.setAge(22);
