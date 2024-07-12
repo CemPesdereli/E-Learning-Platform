@@ -29,7 +29,7 @@ public class Author extends BaseEntity {
 
     private int age;
 
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany(mappedBy = "authors",fetch = FetchType.EAGER)
     private List<Course> courses;
 
 
