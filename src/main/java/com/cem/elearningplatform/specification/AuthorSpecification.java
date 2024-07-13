@@ -37,4 +37,18 @@ public class AuthorSpecification {
 
         };
     }
+    public static Specification<Author> hasEmail(String email){
+        return (
+                Root<Author> root,
+                CriteriaQuery<?> query,
+                CriteriaBuilder builder) -> {
+
+            if(email==null){
+                return null;
+            }
+            return builder.equal(root.get("email"), email);
+
+
+        };
+    }
 }
